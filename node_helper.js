@@ -47,15 +47,23 @@ module.exports = NodeHelper.create({
 
                     self.bmwInfo = {
                       updateTime: moment.unix(attributes.updateTime_converted_timestamp / 1000).format(),
-                      doorLock: attributes.door_lock_state,
+                      doorSecure: attributes.door_lock_state,
                       electricRange: Number(attributes.beRemainingRangeElectricMile).toFixed(),
                       fuelRange: Number(attributes.beRemainingRangeFuelMile).toFixed(),
                       mileage: Number(attributes.mileage).toFixed(),
                       connectorStatus: attributes.connectorStatus,
+                      remainingFuel: Number(attributes.remaining_fuel).toFixed(),
                       vin: vin,
                       chargingLevelHv: Number(attributes.chargingLevelHv).toFixed(),
                       imageUrl: null,
-                      unitOfLength: attributes.unitOfLength
+                      unitOfLength: attributes.unitOfLength,
+                      carDoor_pf: attributes.door_passenger_front,
+                      carDoor_df: attributes.door_driver_front,
+                      carDoor_ts: attributes.trunk_state,
+                      carDoor_hs: attributes.hood_state,
+                      carWindow_pf: attributes.window_passenger_front,
+                      carWindow_df: attributes.window_driver_front
+
                     }
 
                     if (self.config.distance === "km") {
